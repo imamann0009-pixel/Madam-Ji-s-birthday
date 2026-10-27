@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff0f5">
+  <meta name="description" content="A little birthday surprise for Dipa (Madam ji), with love from Aman.">
+  <title>Happy Birthday, Dipa Madam Ji! 💗</title>
+  <style>
+    :root {
+      --pink: #f7a8c4;
+      --deep: #b93e73;
+      --cream: #fff8fb;
+      --ink: #5d3548;
+      --lilac: #e9ddff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink);
+      font-family: ui-rounded, "Trebuchet MS", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, #ffe0ed 0, transparent 28rem),
+        radial-gradient(circle at 90% 25%, #e9ddff 0, transparent 25rem),
+        var(--cream);
+      overflow-x: hidden;
+    }
+    button { font: inherit; }
+    .hearts { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .heart {
+      position: absolute; bottom: -50px; opacity: 0;
+      animation: floatUp linear forwards; filter: drop-shadow(0 3px 5px #d66a9c22);
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg) scale(.7); opacity: 0; }
+      12% { opacity: .7; }
+      85% { opacity: .65; }
+      100% { transform: translateY(-115vh) rotate(35deg) scale(1.25); opacity: 0; }
+    }
+    .page { position: relative; z-index: 1; }
+    .hero {
+      min-height: 100svh; display: grid; place-items: center; text-align: center;
+      padding: 34px 18px 55px; position: relative;
+    }
+    .hero-card {
+      width: min(100%, 760px); padding: clamp(26px, 6vw, 58px) clamp(18px, 5vw, 48px);
+      border: 1px solid #fff; border-radius: 32px;
+      background: #ffffffa8; backdrop-filter: blur(12px);
+      box-shadow: 0 20px 70px #c15b8d19;
+      animation: appear .9s ease both;
+    }
+    @keyframes appear { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
+    .eyebrow {
+      display: inline-block; background: #ffe0ec; color: var(--deep);
+      padding: 8px 14px; border-radius: 999px; font-size: .83rem; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .cake { font-size: clamp(4rem, 14vw, 7rem); line-height: 1.3; margin: 15px 0 0; animation: bob 3s ease-in-out infinite; }
+    @keyframes bob { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+    h1 { font-size: clamp(2.5rem, 10vw, 5.5rem); line-height: .98; letter-spacing: -.055em; margin: 14px 0; color: var(--deep); }
+    h1 span { display: block; color: #d96f9b; font-size: .53em; letter-spacing: -.025em; margin-top: 12px; }
+    .hero p { max-width: 520px; margin: 18px auto 25px; line-height: 1.75; font-size: clamp(1rem, 2.7vw, 1.13rem); }
+    .buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 11px; }
+    .btn {
+      border: 0; cursor: pointer; border-radius: 999px; padding: 13px 20px;
+      font-weight: 800; text-decoration: none; display: inline-flex; gap: 8px;
+      align-items: center; justify-content: center; transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px #b93e7326; }
+    .primary { background: var(--deep); color: white; }
+    .secondary { background: #fff; color: var(--deep); border: 1px solid #f4c5d7; }
+    .scroll-note { position: absolute; bottom: 18px; font-size: .85rem; color: #a56b85; animation: nudge 1.8s infinite; }
+    @keyframes nudge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+    section { padding: 68px 18px; }
+    .section-inner { width: min(100%, 980px); margin: auto; }
+    .section-label { color: var(--deep); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; }
+    h2 { font-size: clamp(2rem, 7vw, 3.4rem); letter-spacing: -.04em; line-height: 1.05; margin: 10px 0 16px; color: #8f3b62; }
+    .intro { max-width: 620px; line-height: 1.8; }
+    .letter-wrap { margin-top: 28px; padding: clamp(22px, 5vw, 40px); background: #fff; border: 1px solid #f7dce7; border-radius: 25px; box-shadow: 0 15px 40px #a8487410; }
+    .letter-wrap p { line-height: 1.9; font-size: 1.04rem; margin: 0 0 15px; }
+    .signature { color: var(--deep); font-weight: 900; font-size: 1.15rem; margin-top: 20px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 26px; }
+    .photo {
+      min-height: 220px; aspect-ratio: 4 / 5; border: 2px dashed #edb5cc; border-radius: 22px;
+      background: linear-gradient(145deg, #ffe0ec, #f0e6ff); display: grid; place-items: center;
+      text-align: center; padding: 14px; overflow: hidden; position: relative;
+    }
+    .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .photo .placeholder { font-size: 2.6rem; }
+    .photo small { display: block; margin-top: 7px; color: #8f526d; line-height: 1.5; }
+    .photo input { display: none; }
+    .photo label { cursor: pointer; font-weight: 800; font-size: .88rem; background: #ffffffb8; border-radius: 999px; padding: 8px 12px; margin-top: 10px; }
+    .gallery-tip { font-size: .9rem; color: #966b80; margin-top: 13px; line-height: 1.6; }
+    .surprise {
+      text-align: center; padding: clamp(28px, 6vw, 55px); border-radius: 30px;
+      background: linear-gradient(135deg, #ffe0ec, #f0e5ff); border: 1px solid white;
+    }
+    .gift { font-size: 4rem; margin-bottom: 8px; }
+    .surprise-copy { display: none; max-width: 620px; margin: 22px auto 0; padding: 23px; border-radius: 22px; background: #ffffffc9; line-height: 1.9; animation: appear .6s ease both; }
+    .surprise-copy.open { display: block; }
+    .footer { text-align: center; padding: 35px 18px 48px; color: #9c6880; font-size: .92rem; }
+    .footer strong { color: var(--deep); }
+    .toast { position: fixed; z-index: 10; bottom: 18px; left: 50%; transform: translate(-50%, 20px); background: #63334c; color: #fff; padding: 11px 16px; border-radius: 999px; opacity: 0; pointer-events: none; transition: .3s; text-align: center; width: max-content; max-width: calc(100% - 30px); }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .confetti { position: fixed; z-index: 9; top: -20px; pointer-events: none; animation: fall 2.5s linear forwards; }
+    @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: .1; } }
+    @media (max-width: 640px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .photo { min-height: 165px; border-radius: 17px; }
+      .photo:last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+      section { padding: 52px 16px; }
+      .hero-card { border-radius: 25px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+  <main class="page">
+    <header class="hero" id="top">
+      <div class="hero-card">
+        <div class="eyebrow">A little surprise, just for you ✨</div>
+        <div class="cake" aria-hidden="true">🎂</div>
+        <h1>Happy Birthday!<span>Dipa (Madam ji) 💗</span></h1>
+        <p>Aaj ka din extra special hai, kyunki aaj celebrate karna hai ek extra special insaan ko. Ready for your little surprise? 🌷</p>
+        <div class="buttons">
+          <a class="btn primary" href="#letter">Open your wishes 💌</a>
+          <button class="btn secondary" id="partyBtn" type="button">Sprinkle some magic ✨</button>
+        </div>
+      </div>
+      <div class="scroll-note">little moments & lots of love ↓</div>
+    </header>
+
+    <section id="letter">
+      <div class="section-inner">
+        <div class="section-label">A note from Aman 💌</div>
+        <h2>For my favourite Madam ji</h2>
+        <p class="intro">Kuch log life ko thoda aur happy, thoda aur funny, aur bahut zyada special bana dete hain. You’re one of those people, Dipa. 💕</p>
+        <div class="letter-wrap">
+          <p>Dear Dipa (Madam ji), 🌸</p>
+          <p>Happy Birthdayyyy! 🥳💗</p>
+          <p>Dua hai ki tumhari life hamesha happiness, pyaar, success aur cute-cute moments se full rahe. Tumhari smile hamesha aise hi bani rahe, tumhare saare dreams poore hon, aur har naya year tumhare liye aur bhi beautiful memories lekar aaye.</p>
+          <p>Hamesha apni amazing self rehna — thodi si cute, thodi si dramatic, aur full-on special! 😌✨ Aaj ke din bas enjoy karo, lots of cake khao, aur yaad rakhna ki you deserve all the good things in the world.</p>
+          <p>Once again, happiest birthday, Madam ji! Tumhara aaj ka din tumhari tarah hi beautiful ho. 🎂🫶</p>
+          <div class="signature">With lots of wishes,<br>Aman 💖</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-inner">
+        <div class="section-label">Little memory lane 📸</div>
+        <h2>Moments worth keeping</h2>
+        <p class="intro">Yahan apni favourite photos add karo, and turn this little website into your own memory album.</p>
+        <div class="gallery-grid">
+          <div class="photo">
+            <div class="placeholder">🌷<small>Our favourite memory</small><label for="photo1">＋ Add photo</label></div>
+            <input id="photo1" type="file" accept="image/*" aria-label="Add first photo">
+          </div>
+          <div class="photo">
+            <div class="placeholder">🧸<small>That silly moment</small><label for="photo2">＋ Add photo</label></div>
+            <input id="photo2" type="file" accept="image/*" aria-label="Add second photo">
+          </div>
+          <div class="photo">
+            <div class="placeholder">💗<small>A memory to smile at</small><label for="photo3">＋ Add photo</label></div>
+            <input id="photo3" type="file" accept="image/*" aria-label="Add third photo">
+          </div>
+        </div>
+        <p class="gallery-tip">Tip: Tap “Add photo” to preview pictures on this device. To include them in the website you publish, put the photos in the project folder and update the gallery in the HTML, or use the included guide.</p>
+      </div>
+    </section>
+
+    <section id="surprise">
+      <div class="section-inner">
+        <div class="surprise">
+          <div class="section-label">Psst… one last thing</div>
+          <div class="gift" aria-hidden="true">🎁</div>
+          <h2>A tiny birthday surprise</h2>
+          <p>Madam ji, there’s one more message waiting inside this little gift.</p>
+          <button class="btn primary" id="giftBtn" type="button" aria-expanded="false">Tap to open your gift 💝</button>
+          <div class="surprise-copy" id="surpriseCopy" aria-live="polite">
+            <strong>Dear Dipa, 💗</strong><br>
+            Chahe life kitni bhi busy ho jaaye, I hope tumhare paas hamesha reasons hon smile karne ke liye, log hon jo tumhe appreciate karein, aur dreams hon jo tumhe excited rakhein. Keep shining, keep laughing, and keep being the wonderful person you are. 🌟<br><br>
+            <strong>Happy Birthday, Madam ji! — Aman 🎂</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      Made with <span aria-label="love">💗</span> and a little bit of magic by <strong>Aman</strong><br>
+      For Dipa (Madam ji) — today, tomorrow, and always 🌷
+    </footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const heartLayer = document.getElementById('hearts');
+    const heartSymbols = ['💗', '💕', '💖', '♡', '🌸', '✨'];
+    function makeHeart() {
+      const heart = document.createElement('span');
+      heart.className = 'heart';
+      heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (14 + Math.random() * 22) + 'px';
+      heart.style.animationDuration = (8 + Math.random() * 8) + 's';
+      heartLayer.appendChild(heart);
+      setTimeout(() => heart.remove(), 17000);
+    }
+    for (let i = 0; i < 12; i++) setTimeout(makeHeart, i * 400);
+    setInterval(makeHeart, 850);
+
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+    }
+    function celebrate() {
+      const symbols = ['💗', '✨', '🌸', '🎉', '💕', '🎊'];
+      for (let i = 0; i < 55; i++) {
+        const bit = document.createElement('span');
+        bit.className = 'confetti';
+        bit.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        bit.style.left = Math.random() * 100 + 'vw';
+        bit.style.fontSize = (12 + Math.random() * 18) + 'px';
+        bit.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+        document.body.appendChild(bit);
+        setTimeout(() => bit.remove(), 4000);
+      }
+    }
+    document.getElementById('partyBtn').addEventListener('click', () => {
+      celebrate();
+      showToast('Birthday magic activated for Madam ji! ✨');
+    });
+    document.getElementById('giftBtn').addEventListener('click', event => {
+      const copy = document.getElementById('surpriseCopy');
+      const isOpen = copy.classList.toggle('open');
+      event.currentTarget.textContent = isOpen ? 'Your gift is open 💗' : 'Tap to open your gift 💝';
+      event.currentTarget.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) { celebrate(); copy.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    });
+    ['photo1', 'photo2', 'photo3'].forEach(id => {
+      const input = document.getElementById(id);
+      input.addEventListener('change', () => {
+        const file = input.files && input.files[0];
+        if (!file) return;
+        if (!file.type.startsWith('image/')) { showToast('Please choose an image file.'); return; }
+        const card = input.closest('.photo');
+        let img = card.querySelector('img');
+        if (!img) { img = document.createElement('img'); img.alt = 'Selected memory'; card.appendChild(img); }
+        const reader = new FileReader();
+        reader.onload = e => { img.src = e.target.result; };
+        reader.readAsDataURL(file);
+        const placeholder = card.querySelector('.placeholder');
+        if (placeholder) placeholder.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
